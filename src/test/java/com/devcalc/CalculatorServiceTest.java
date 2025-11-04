@@ -34,4 +34,8 @@ public class CalculatorServiceTest {
         });
         assertEquals("Division by zero", exception.getMessage());
     }
+    @Test
+    public void failingTest() {
+        assertEquals(1, 2, "Teste falho proposital");
+    }
 }

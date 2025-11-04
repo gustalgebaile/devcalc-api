@@ -1,14 +1,23 @@
-# Escolhe uma imagem base com Java para rodar a aplicação
-FROM eclipse-temurin:17-alpine
+# Etapa 1: Builder - compila e roda testes
+FROM maven:3.9.1-eclipse-temurin-17 AS builder
 
-# Define diretório de trabalho no container
 WORKDIR /app
 
-# Copia o arquivo .jar compilado para dentro do container
-COPY target/devcalc-api-1.0-SNAPSHOT.jar devcalc.jar
+# Copiando pom.xml e código fonte para cachear download das dependências
+COPY pom.xml .
+COPY src ./src
 
-# Expõe a porta que sua aplicação usará (exemplo 7000)
+# Roda o build eos testes unitários
+RUN mvn clean verify
+
+# Etapa 2: Imagem final - pega o jar gerado e roda a aplicação
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+# Copia o jar do estágio builder
+COPY --from=builder /app/target/devcalc-api-1.0-SNAPSHOT.jar devcalc.jar
+
 EXPOSE 7000
 
-# Comando para iniciar sua aplicação quando o container iniciar
 CMD ["java", "-jar", "devcalc.jar"]
