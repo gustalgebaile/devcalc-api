@@ -24,6 +24,9 @@ public class CalculatorServiceTest {
     }
     @Test
     public void testDivideByZero() {
-        assertThrows(IllegalArgumentException.class, () -> calculatorService.divide(10, 0));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculatorService.divide(10, 0);
+        });
+        assertEquals("Division by zero", exception.getMessage());
     }
 }
