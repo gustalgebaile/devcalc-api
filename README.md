@@ -339,15 +339,3 @@ O projeto aborda os seguintes conceitos:
 7. Infraestrutura como Código - Descrever infraestrutura em arquivos de configuração versionáveis.
 
 ---
-
-## Notas Importantes
-
-Os dados do PostgreSQL e Redis são persistidos no volume `shared-data`. Se o volume for removido, todos os dados serão perdidos.
-
-Os health checks verificam a saúde dos serviços a cada 10 segundos. Alterações no docker-compose.yml permitem ajustar este intervalo.
-
-Se o build falhar nos testes, nenhuma imagem será criada. O erro será exibido no terminal indicando qual teste falhou.
-
-A rede `dev_network` é criada automaticamente pelo Docker Compose e permite que containers se comuniquem usando nomes de containers como hostnames.
-
-As senhas e credenciais configuradas aqui são apenas para desenvolvimento local e nunca devem ser usadas em produção.
