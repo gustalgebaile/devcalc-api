@@ -320,22 +320,6 @@ Este comando remove containers, redes e volumes. Use com cuidado pois os dados s
 
 ---
 
-## Conceitos Aprendidos
-
-O projeto aborda os seguintes conceitos:
-
-1. Dockerfile multistage - Separar etapas de build e produção para gerar imagens menores e mais seguras.
-
-2. Integração contínua - Automatizar testes durante o build, falhando se testes falharem.
-
-3. Docker Compose - Definir e executar múltiplos containers com uma única configuração.
-
-4. Networking Docker - Containers se comunicarem por nomes dentro da mesma rede.
-
-5. Volumes Docker - Compartilhar dados entre containers de forma persistente.
-
-6. Health Checks - Monitorar automaticamente a saúde dos serviços.
-
 7. Infraestrutura como Código - Descrever infraestrutura em arquivos de configuração versionáveis.
 
 ---
